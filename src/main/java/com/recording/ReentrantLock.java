@@ -76,7 +76,7 @@ public class ReentrantLock{
         protected boolean tryRelease(int arg) {
             int state = getState()- arg;
             boolean free = false;
-            if (state == 0){
+            if (state == 0){        //因为同一时刻只能有一个线程释放锁,固此段不需用cas
                 setState(state);
                 setExclusiveOwnerThread(null);
                 free = true;
