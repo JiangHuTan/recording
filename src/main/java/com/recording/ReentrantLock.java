@@ -74,10 +74,14 @@ public class ReentrantLock{
          * 覆写tryRelease()方法
          */
         protected boolean tryRelease(int arg) {
-            int state = getState();
-            state = state - arg;
-            setState(state);
-            return true;
+            int state = getState()- arg;
+            boolean free = false;
+            if (state == 0){
+                setState(state);
+                setExclusiveOwnerThread(null);
+                free = true;
+            }
+            return free;
         }
     }
 
