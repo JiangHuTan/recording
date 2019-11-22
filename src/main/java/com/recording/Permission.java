@@ -23,6 +23,7 @@ package com.recording;
 /**
  * 测试练习类,默认有四种权限供设置
  * 权限以二进制数的每位的1为标准
+ * 2019.11.22
  */
 class Permission{
     private static final int ALLOW_UPDATE = 1 << 0;     //0001      1
